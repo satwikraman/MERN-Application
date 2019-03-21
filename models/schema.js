@@ -7,5 +7,5 @@
      email: String,
      password : String
  });
- const Registration=mongoose.model('Register'.RegistrationSchema);
+ const Registration=mongoose.model('Register',RegistrationSchema);
  module.exports=Registration;

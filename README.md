@@ -1,5 +1,5 @@
 # MERN-Application
 
-commands
-# npm install
-# npm start
+# commands
+ npm install
+ npm start

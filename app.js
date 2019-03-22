@@ -1,7 +1,7 @@
-var express=require('express');
-var bodyParser=require('body-parser');
+const express=require('express');
+const bodyParser=require('body-parser');
 const mongoose=require('mongoose');
-var app=express();
+const app=express();
 const Register=require('./models/schema');
 let dburl='mongodb://localhost:27017/Registrationdb'
 mongoose.connect(dburl, (err)=> {
@@ -43,7 +43,7 @@ app.post('/registration',(req,res)=>{
    
 });
 
-var port=4000;
+let port=4000;
 app.listen(port,()=>{
     console.log(`Running on ${port}`);
 });

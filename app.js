@@ -21,14 +21,14 @@ app.get('/',(req,res)=>{
 });
 app.post('/',(req,res)=>{
     let ip=req.body;
-    let Login=Register.findOne({},  { projection: { _id: 0,name:1, email: 1, password: 1 } });
-    for(let i in Login){
-        if((i.email===ip.email)&&(i.password===ip.password)){
-            res.send(`hey ${i.name} , you are succesfully logged in`)
-        }
-    }
-});
+    
+    Register.findOne({email:ip.email}).then((data)=>{
+        res.send(data);
+    })
 
+    
+});
+        
 app.get('/registration',(req,res)=>{
     res.sendFile(__dirname+'/registration.html');
 });

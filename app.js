@@ -20,15 +20,14 @@ app.get('/',(req,res)=>{
     res.sendFile(__dirname+'/index.html');
 });
 app.post('/',(req,res)=>{
-
     let ip=req.body;
-    console.log(ip);
-    res.send('data posted succesfully');
+    let Login=Register.findOne({},  { projection: { _id: 0,name:1, email: 1, password: 1 } });
+    for(let i in Login){
+        if((i.email===ip.email)&&(i.password===ip.password)){
+            res.send(`hey ${i.name} , you are succesfully logged in`)
+        }
+    }
 });
-
-app.get('/hey',(req,res)=>{
-    res.send("Hellwo world")
-})
 
 app.get('/registration',(req,res)=>{
     res.sendFile(__dirname+'/registration.html');

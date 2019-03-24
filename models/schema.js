@@ -23,5 +23,5 @@
          required:[true,'Password is required']
         }
  });
- const Registration=mongoose.model('Register',RegistrationSchema);
+ const Registration=mongoose.model('Registrationdb',RegistrationSchema);
  module.exports=Registration;

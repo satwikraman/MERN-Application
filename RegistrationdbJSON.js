@@ -1,4 +1,4 @@
-db.Registrationdb.insert([
+db.Registrationdbs.insert([
     {
         "name":'satwik raman',
         "phone":'9581292911',

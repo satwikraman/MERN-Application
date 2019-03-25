@@ -1,7 +1,7 @@
 {
-  "name": "authentication",
+  "name": "mern-application",
   "version": "1.0.0",
-  "description": "",
+  "description": "npm install\r  npm start",
   "main": "Functionality.js",
   "scripts": {
     "start": "nodemon app.js"
@@ -11,9 +11,19 @@
   "dependencies": {
     "body-parser": "^1.18.3",
     "express": "^4.16.4",
+    "f": "^1.4.0",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.4.19",
     "node": "^11.12.0",
     "nodemon": "^1.18.10"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/satwikraman/MERN-Application.git"
+  },
+  "bugs": {
+    "url": "https://github.com/satwikraman/MERN-Application/issues"
+  },
+  "homepage": "https://github.com/satwikraman/MERN-Application#readme"
 }

@@ -15,9 +15,6 @@ mongoose.connect(dburl, (err)=> {
         console.log("succssfully connected");   //Database connection
     }
 });
-mongoose.Promise=global.Promise;
-
-
 app.use(bodyParser.urlencoded({extended:false}));
 var register=new Register();
 app.get('/registration',(req,res)=>{
@@ -79,7 +76,7 @@ app.post('/',(req,res)=>{
 
 
 
-let port=4000;
+let port=process.env.PORT || 4000;
 app.listen(port,()=>{
     console.log(`Running on ${port}`);
 });

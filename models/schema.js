@@ -1,5 +1,7 @@
  const mongoose=require('mongoose');
  const Schema=mongoose.Schema;
+ const bcrypt=require("bcrypt-nodejs");
+
  
  const RegistrationSchema= new Schema({
      name: {
@@ -23,5 +25,21 @@
          required:[true,'Password is required']
         }
  });
- const Registration=mongoose.model('Registrationdb',RegistrationSchema);
- module.exports=Registration;
+
+ RegistrationSchema.pre('save',function(next) {
+
+    var user=this;
+    bcrypt.hash(user.password,null,null,function (err,hash) {   //password encryptingggg
+        if(err)
+                return next(err);
+        user.password=hash;
+        next();
+    
+    })
+    });
+
+
+RegistrationSchema.methods.comparePassword=function (password) {
+    return bcrypt.compareSync(password, this.password);
+}
+ module.exports=mongoose.model('Register',RegistrationSchema);

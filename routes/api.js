@@ -26,7 +26,7 @@ const router=express.Router();
         if (req.body.name == null || req.body.name == '' || req.body.password == null || req.body.password == '' || req.body.email == null || req.body.phone == ''|| req.body.phone == null || req.body.phone == '') {
             res.json({success:false,message:'you have to give Username,password and email'});
         } else {
-            register.create( (err)=> {
+            register.create(req.body ,(err)=> {
                 if (err) throw err
                 else res.json({success:true,message:'User Created'});
             });
@@ -34,7 +34,7 @@ const router=express.Router();
     
     });
     router.post('/',(req,res)=>{
-        register.findOne({email:req.body.email}).exec( (err, register)=> {
+        register.find({email:req.body.email}).exec( (err, register)=> {
             if(err) throw err;
     
             if(!register) {

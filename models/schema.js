@@ -1,6 +1,6 @@
- const mongoose=require('mongoose');
- const Schema=mongoose.Schema;
- const bcrypt=require("bcrypt-nodejs");
+ import { Schema as _Schema, model } from 'mongoose';
+ const Schema=_Schema;
+ import { hash as _hash, compareSync } from "bcrypt-nodejs";
 
  
  const RegistrationSchema= new Schema({
@@ -29,7 +29,7 @@
  RegistrationSchema.pre('save',function(next) {
 
     var user=this;
-    bcrypt.hash(user.password,null,null,function (err,hash) {   //password encryptingggg
+    _hash(user.password,null,null,function (err,hash) {   //password encryptingggg
         if(err)
                 return next(err);
         user.password=hash;
@@ -40,6 +40,6 @@
 
 
 RegistrationSchema.methods.comparePassword=function (password) {
-    return bcrypt.compareSync(password, this.password);
+    return compareSync(password, this.password);
 }
- module.exports=mongoose.model('Register',RegistrationSchema);
+ module.exports =defaultmodel('Register',RegistrationSchema);

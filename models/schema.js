@@ -1,7 +1,6 @@
- import { Schema as _Schema, model } from 'mongoose';
- const Schema=_Schema;
- import { hash as _hash, compareSync } from "bcrypt-nodejs";
-
+const mongoose=require('mongoose');
+const bcrypt=require ("bcrypt-nodejs");
+const Schema=mongoose.Schema
  
  const RegistrationSchema= new Schema({
      name: {
@@ -42,4 +41,4 @@
 RegistrationSchema.methods.comparePassword=function (password) {
     return compareSync(password, this.password);
 }
- module.exports =defaultmodel('Register',RegistrationSchema);
+ module.exports =mongoose.model('Register',RegistrationSchema);

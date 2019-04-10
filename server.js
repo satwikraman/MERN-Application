@@ -1,14 +1,14 @@
-import express from "express";
+const express=require('express');
 const app=express();
 const port=process.env.PORT || 4000;
-import { json, urlencoded } from "body-parser";
+const bodyParser=require('body-parser') ;
 
-import appRoutes from './routes/api';
+const appRoutes = require('./routes/api');
 
 
 //app.use(morgan('dev'));
-app.use(json());
-app.use(urlencoded({extended:true}));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended:true}));
 app.use('/api',appRoutes);
 
 app.get('/registration',(req,res)=>{

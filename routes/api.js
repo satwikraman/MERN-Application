@@ -1,10 +1,10 @@
-import { sign } from 'jsonwebtoken';
-import { Router } from 'express';
-import { connect } from "mongoose";
-import { name, password, email as _email, phone, create, find } from '../models/schema';
+const  sign =require('jsonwebtoken') ;
+const  Router  =require('express');
+const  mongoose = require("mongoose");
+const register=require('../models/schema');
 
 let dburl='mongodb://localhost:27017/Registrationdb'
-connect(dburl, (err)=> {
+mongoose.connect(dburl, (err)=> {
     if(err){
         console.log("Not connected");
     }else
@@ -17,12 +17,12 @@ const router=Router();
     router.post('/registration',(req,res)=>{
         name = req.body.name;
         password = req.body.password;
-        _email = req.body.email;
+        email = req.body.email;
         phone=req.body.phone;
-        if (req.body.name == null || req.body.name == '' || req.body.password == null || req.body.password == '' || req.body.email == null || req.body.phone == ''|| req.body.phone == null || req.body.phone == '') {
+        if (name == null || name == '' || password == null || password == '' || email == null ||phone == ''|| phone == null || phone == '') {
             res.json({success:false,message:'you have to give Username,password and email'});
         } else {
-            create(req.body ,(err)=> {
+           register.create(req.body ,(err)=> {
                 if (err) throw err
                 else res.json({success:true,message:'User Created'});
             });
@@ -56,4 +56,4 @@ const router=Router();
     
     });   
     });
-module.exports= defaultrouter;
+module.exports= router;
